@@ -21,8 +21,8 @@ dataSources:
           file: ./abis/UniswapV2Factory.json
         - name: UniswapV2Pair
           file: ./abis/UniswapV2Pair.json
-        - name: ERC20                           # ✅ Tambahkan ini
-          file: ./abis/ERC20.json              # ✅ Pastikan file-nya ada
+        - name: ERC20                         
+          file: ./abis/ERC20.json             
       eventHandlers:
         - event: PairCreated(indexed address,indexed address,address,uint256)
           handler: handlePairCreated
