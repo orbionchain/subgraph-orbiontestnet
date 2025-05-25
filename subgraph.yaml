@@ -1,0 +1,52 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+
+dataSources:
+  - kind: ethereum/contract
+    name: Factory
+    network: orbiontestnet
+    source:
+      address: "0x95B2A9C481921774A8C5c88DB8831A8D6ED755d2"
+      abi: UniswapV2Factory
+      startBlock: 1000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Pair
+      abis:
+        - name: UniswapV2Factory
+          file: ./abis/UniswapV2Factory.json
+        - name: UniswapV2Pair
+          file: ./abis/UniswapV2Pair.json
+        - name: ERC20                           # ✅ Tambahkan ini
+          file: ./abis/ERC20.json              # ✅ Pastikan file-nya ada
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handlePairCreated
+      file: ./src/factory.ts
+
+templates:
+  - name: PairTemplate
+    kind: ethereum/contract
+    network: orbiontestnet
+    source:
+      abi: UniswapV2Pair
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Swap
+        - Pair
+      abis:
+        - name: UniswapV2Pair
+          file: ./abis/UniswapV2Pair.json
+      eventHandlers:
+        - event: Swap(indexed address,uint256,uint256,uint256,uint256,indexed address)
+          handler: handleSwap
+        - event: Sync(uint112,uint112)
+          handler: handleSync
+      file: ./src/pair.ts

@@ -1,0 +1,73 @@
+[
+  {
+    "type": "event",
+    "name": "Swap",
+    "inputs": [
+      { "name": "sender", "type": "address", "indexed": true },
+      { "name": "amount0In", "type": "uint256", "indexed": false },
+      { "name": "amount1In", "type": "uint256", "indexed": false },
+      { "name": "amount0Out", "type": "uint256", "indexed": false },
+      { "name": "amount1Out", "type": "uint256", "indexed": false },
+      { "name": "to", "type": "address", "indexed": true }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "Sync",
+    "inputs": [
+      { "name": "reserve0", "type": "uint112", "indexed": false },
+      { "name": "reserve1", "type": "uint112", "indexed": false }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "Mint",
+    "inputs": [
+      { "name": "sender", "type": "address", "indexed": true },
+      { "name": "amount0", "type": "uint256", "indexed": false },
+      { "name": "amount1", "type": "uint256", "indexed": false }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "Burn",
+    "inputs": [
+      { "name": "sender", "type": "address", "indexed": true },
+      { "name": "amount0", "type": "uint256", "indexed": false },
+      { "name": "amount1", "type": "uint256", "indexed": false },
+      { "name": "to", "type": "address", "indexed": true }
+    ],
+    "anonymous": false
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "token0",
+    "outputs": [{ "name": "", "type": "address" }],
+    "type": "function",
+    "stateMutability": "view"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "token1",
+    "outputs": [{ "name": "", "type": "address" }],
+    "type": "function",
+    "stateMutability": "view"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getReserves",
+    "outputs": [
+      { "name": "reserve0", "type": "uint112" },
+      { "name": "reserve1", "type": "uint112" },
+      { "name": "blockTimestampLast", "type": "uint32" }
+    ],
+    "type": "function",
+    "stateMutability": "view"
+  }
+]
